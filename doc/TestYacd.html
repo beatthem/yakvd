@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class TestYacd - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Test::Unit::TestCase
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-_test_template">#_test_template</a>
+    
+    <li ><a href="#method-i-test_get_default">#test_get_default</a>
+    
+    <li ><a href="#method-i-test_get_range">#test_get_range</a>
+    
+    <li ><a href="#method-i-test_get_time">#test_get_time</a>
+    
+    <li ><a href="#method-i-test_get_value">#test_get_value</a>
+    
+    <li ><a href="#method-i-test_set_value">#test_set_value</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-TestYacd">
+  <h1 id="class-TestYacd" class="class">
+    class TestYacd
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-_test_template" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">_test_template</span><span
+            class="method-args">( query_hash, allowed_response, error_text, inverse = false )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="_test_template-source">
+            <pre><span class="ruby-comment"># File yakvd_tests.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_test_template</span>(
+  <span class="ruby-identifier">query_hash</span>,
+  <span class="ruby-identifier">allowed_response</span>,
+  <span class="ruby-identifier">error_text</span>,
+  <span class="ruby-identifier">inverse</span> = <span class="ruby-keyword">false</span>
+)
+  <span class="ruby-identifier">s</span> = <span class="ruby-constant">TCPSocket</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;127.0.0.1&#39;</span>, <span class="ruby-value">2000</span>)
+
+  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;test\r\n&quot;</span>)
+  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\r\n&quot;</span>)
+  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">print</span>(
+    <span class="ruby-identifier">query_hash</span>.<span class="ruby-identifier">to_json</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\r\n&quot;</span>
+  )
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">gets</span>(<span class="ruby-string">&quot;\r\n&quot;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">inverse</span>
+    <span class="ruby-identifier">assert_not_equal</span>(<span class="ruby-identifier">allowed_response</span>, <span class="ruby-identifier">response</span>, <span class="ruby-identifier">error_text</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-identifier">allowed_response</span>, <span class="ruby-identifier">response</span>, <span class="ruby-identifier">error_text</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">close</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-test_get_default" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_get_default</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_get_default-source">
+            <pre><span class="ruby-comment"># File yakvd_tests.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_get_default</span>
+  <span class="ruby-identifier">query_hash</span> = {
+    <span class="ruby-identifier">query</span><span class="ruby-operator">:</span> {
+      <span class="ruby-identifier">command</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;get_by_key&#39;</span>,
+      <span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;programmer-2&#39;</span>
+    }
+  }
+  <span class="ruby-identifier">_test_template</span>(<span class="ruby-identifier">query_hash</span>, <span class="ruby-constant">YakvdConstants</span>.<span class="ruby-identifier">key_not_found</span>, <span class="ruby-string">&quot;get by key is broken&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-test_get_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_get_range</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_get_range-source">
+            <pre><span class="ruby-comment"># File yakvd_tests.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_get_range</span>
+  <span class="ruby-identifier">query_hash</span> = {
+    <span class="ruby-identifier">query</span><span class="ruby-operator">:</span> {
+      <span class="ruby-identifier">command</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;get_range&#39;</span>,
+      <span class="ruby-identifier">key1</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;programmer-3&#39;</span>,
+      <span class="ruby-identifier">key2</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;programmer-5&#39;</span>
+    }
+  }
+  <span class="ruby-identifier">_test_template</span>(<span class="ruby-identifier">query_hash</span>, <span class="ruby-string">&#39;[&quot;programmer-3&quot;, &quot;programmer-4&quot;, &quot;programmer-5&quot;]&#39;</span>, <span class="ruby-string">&quot;get range is broken&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-test_get_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_get_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_get_time-source">
+            <pre><span class="ruby-comment"># File yakvd_tests.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_get_time</span>
+  <span class="ruby-identifier">query_hash</span> = {
+      <span class="ruby-identifier">query</span><span class="ruby-operator">:</span> {
+          <span class="ruby-identifier">command</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;get_time&#39;</span>
+      }
+  }
+  <span class="ruby-identifier">_test_template</span>(<span class="ruby-identifier">query_hash</span>, <span class="ruby-constant">YakvdConstants</span>.<span class="ruby-identifier">default</span>, <span class="ruby-string">&quot;get time is broken&quot;</span>, <span class="ruby-keyword">true</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-test_get_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_get_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_get_value-source">
+            <pre><span class="ruby-comment"># File yakvd_tests.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_get_value</span>
+  <span class="ruby-identifier">query_hash</span> = {
+    <span class="ruby-identifier">query</span><span class="ruby-operator">:</span> {
+      <span class="ruby-identifier">command</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;get_by_key&#39;</span>,
+      <span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;programmer-3&#39;</span>
+    }
+  }
+  <span class="ruby-identifier">_test_template</span>(<span class="ruby-identifier">query_hash</span>, <span class="ruby-string">&quot;Another Programmer&quot;</span>, <span class="ruby-string">&quot;get value is broken (2)&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-test_set_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_set_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_set_value-source">
+            <pre><span class="ruby-comment"># File yakvd_tests.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_set_value</span>
+  <span class="ruby-identifier">query_hash</span> = {
+    <span class="ruby-identifier">query</span><span class="ruby-operator">:</span> {
+      <span class="ruby-identifier">command</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;set_value&#39;</span>,
+      <span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;programmer-1&#39;</span>,
+      <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Khalikov Ruslan&#39;</span>
+    }
+  }
+  <span class="ruby-identifier">_test_template</span>(<span class="ruby-identifier">query_hash</span>, <span class="ruby-constant">YakvdConstants</span>.<span class="ruby-identifier">success</span>, <span class="ruby-string">&quot;set value is broken&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

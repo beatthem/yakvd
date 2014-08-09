@@ -1,0 +1,1 @@
+curl -d "{\"query\":{"command":"get_by_key","key":"programmer-1"}}\\r\\n" -H "application/json" 127.0.0.1:2000/query
